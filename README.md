@@ -1,3 +1,5 @@
 Niva - its a real time web application in the srm university ap and the amrita ap the tech stack used for this is react for the frontend functioning and the tailwind for the designing and the node for the email functioning with the smtp server and the express for the backend functioning and supabase for the database and coming to the project overview the web application consists of 3 modules one is for the customers where the customer can order food fruits and refreshments and the partner can receive all the orders and take the orders and click out of delivery where the customers and the admin will be notified abt the order and the admin can check all the payments received and the admin will have the total control over the orders and the partners and the partners and razorpay is used for the payments
 
 Backend Repo :- https://github.com/manaspranav/NIVA-APP-FDS-BE
+
+application link :- https://www.niva2026.in/customer/deliveries
