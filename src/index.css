@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gilroy Medium Font - For body text */
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('../public/gilroy/Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Gilroy Semibold Font - For headings */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./fonts/Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Metropolis Semibold Font for Numbers */
+@font-face {
+  font-family: 'Metropolis';
+  src: url('./fonts/Metropolis-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  /* Gilroy-SemiBold for all normal body text */
+  body {
+    font-family: 'Gilroy', 'Gilroy-Medium', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+  }
+  
+  /* Apply Gilroy-SemiBold to all text elements by default */
+  p, span, div, label, input, textarea, button, a, li {
+    font-family: 'Gilroy', 'Gilroy-Medium', 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+  
+  /* Gilroy-Medium for main headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Gilroy-Medium', 'Gilroy', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !important;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Gilroy-Medium for any text with bold font weight */
+  .font-bold, .font-semibold {
+    font-family: 'Gilroy-Medium', 'Gilroy', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !important;
+    font-weight: 500;
+  }
+  
+  /* Metropolis for numbers and currency */
+  .text-\[0-9\], 
+  span:has(> :is(₹, \₹, Rs, RS)),
+  *[class*="price"],
+  *[class*="amount"],
+  *[class*="total"],
+  *[class*="count"],
+  *[class*="rupee"] {
+    font-family: 'Metropolis', 'Montserrat', sans-serif !important;
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Metropolis font for numbers - Global numeric styling */
+  .font-metropolis {
+    font-family: 'Metropolis', 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Apply Metropolis to all numbers globally */
+  * {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Style all number-containing elements with Metropolis */
+  [class*="price"], 
+  [class*="amount"], 
+  [class*="total"], 
+  [class*="count"],
+  [class*="number"],
+  [class*="quantity"],
+  [class*="rupee"],
+  [class*="rs"],
+  input[type="number"],
+  .numeric {
+    font-family: 'Metropolis', 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseOnce {
+    0% { opacity: 0; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-pulse-once {
+    animation: pulseOnce 0.5s ease-out;
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .shadow-smooth {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  }
+  
+  .shadow-smooth-lg {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+  
+  /* Additional font utilities */
+  .font-gilroy {
+    font-family: 'Gilroy', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !important;
+    font-weight: 600;
+  }
+  
+  .font-gilroy-medium {
+    font-family: 'Gilroy-Medium', 'Gilroy', 'Montserrat', sans-serif !important;
+    font-weight: 500;
+  }
+}
+
+/* Global number styling - Applied after utilities for specificity */
+@layer components {
+  /* Style elements containing rupee symbol */
+  :is(span, div, p, td, th, label):has-text("₹"),
+  :is(span, div, p, td, th, label):has-text("Rs"),
+  :is(span, div, p, td, th, label):has-text("₹") {
+    font-family: 'Metropolis', 'Montserrat', sans-serif !important;
+  }
+}
+
+/* Specific overrides for numeric content */
+span:contains("₹"),
+div:contains("₹"),
+p:contains("₹") {
+  font-family: 'Metropolis', 'Montserrat', sans-serif !important;
+  font-variant-numeric: tabular-nums;
+}
